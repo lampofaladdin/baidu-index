@@ -21,6 +21,13 @@ export class BaiduIndex {
     userName: string;
     axiosClient: Axios;
     constructor(accessToken: string, userName: string) {
+        if(!accessToken){
+            throw new BaiduIndexError('accessToken not found','constructor');
+        }
+        if(!userName){
+            throw new BaiduIndexError('userName not found','constructor');
+        }
+
         this.accessToken = accessToken;
         this.userName = userName;
         this.axiosClient = new Axios({
