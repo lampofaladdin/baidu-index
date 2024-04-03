@@ -7,7 +7,7 @@
 
 # @wddv/baidu-index
 
-百度指数 Node.js SDK
+Baidu index sdk for Node.js.
 
 ## Installation
 
@@ -18,29 +18,26 @@ npm install --save @wddv/baidu-index
 ## Usage
 
 ```typescript
-// 初始化实例
 const baiduIndex = new BaiduIndex(
-  process.env.BAIDU_TOKEN!,
-  process.env.BAIDU_NAME!
-);
-// 创建任务
-const { taskId } = await baiduIndex.createTask({
-  datasource: "search",
-  dateRange: {
-    start: "2024-04-01",
-    end: "2024-04-01",
-  },
-  device: ["all"],
-  region: {
-    province: [],
-    city: [],
-    isAll: true,
-  },
-  keyword: ["小米"],
-});
-// 获取任务结果
-const result = await baiduIndex.getResult(taskId);
-console.log(result);
+        process.env.BAIDU_TOKEN!,
+        process.env.BAIDU_NAME!
+    );
+    const { taskId } = await baiduIndex.createTask({
+        datasource: 'search',
+        dateRange: {
+            start: '2024-04-01',
+            end: '2024-04-01'
+        },
+        device: ['all'],
+        region: {
+            province: [],
+            city: [],
+            isAll: true
+        },
+        keyword: ['小米']
+    });
+    const result = await baiduIndex.getResult(taskId);
+    console.log(result);
 ```
 
 [app.ts](example/app.ts)
