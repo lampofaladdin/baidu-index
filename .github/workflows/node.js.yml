@@ -29,9 +29,9 @@ jobs:
           cache: "yarn"
           cache-dependency-path: '**/yarn.lock'
       - run: echo "BAIDU_TOKEN is $BAIDU_TOKEN"    
-          env:
-            BAIDU_TOKEN: ${{ secrets.BAIDU_TOKEN }}
-            BAIDU_NAME: ${{ secrets.BAIDU_NAME }}
+        env:
+          BAIDU_TOKEN: ${{ secrets.BAIDU_TOKEN }}
+          BAIDU_NAME: ${{ secrets.BAIDU_NAME }}
       # - run: yarn
       # - run: yarn build
       # - run: yarn test
