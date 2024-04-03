@@ -18,8 +18,8 @@ jobs:
         node-version: [18.x, 20.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     env:
-      BAIDU_TOKEN: ${{ BAIDU.BAIDU_TOKEN }}
-      BAIDU_NAME: ${{ BAIDU.BAIDU_NAME }}
+      BAIDU_TOKEN: ${{ secrets.BAIDU.BAIDU_TOKEN }}
+      BAIDU_NAME: ${{ secrets.BAIDU.BAIDU_NAME }}
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
@@ -30,8 +30,8 @@ jobs:
           cache-dependency-path: '**/yarn.lock'
       - run: echo "BAIDU_TOKEN is $BAIDU_TOKEN"    
         env:
-          BAIDU_TOKEN: ${{ BAIDU.BAIDU_TOKEN }}
-          BAIDU_NAME: ${{ BAIDU.BAIDU_NAME }}
+          BAIDU_TOKEN: ${{ secrets.BAIDU.BAIDU_TOKEN }}
+          BAIDU_NAME: ${{ secrets.BAIDU.BAIDU_NAME }}
       # - run: yarn
       # - run: yarn build
       # - run: yarn test
