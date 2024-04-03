@@ -23,15 +23,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
+        env:
+          BAIDU_TOKEN: ${{ secrets.BAIDU.BAIDU_TOKEN }}
+          BAIDU_NAME: ${{ secrets.BAIDU.BAIDU_NAME }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
           cache-dependency-path: '**/yarn.lock'
       - run: echo "BAIDU_TOKEN is $BAIDU_TOKEN"    
-        env:
-          BAIDU_TOKEN: ${{ secrets.BAIDU.BAIDU_TOKEN }}
-          BAIDU_NAME: ${{ secrets.BAIDU.BAIDU_NAME }}
+
       # - run: yarn
       # - run: yarn build
       # - run: yarn test
