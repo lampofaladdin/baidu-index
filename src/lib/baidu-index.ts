@@ -1,6 +1,5 @@
 import admZip from 'adm-zip';
 import axios, { Axios } from 'axios';
-import CsvToJson from 'csvtojson';
 import { createWriteStream } from 'fs';
 import { unlink } from 'fs/promises';
 import * as iconv from 'iconv-lite';
@@ -8,13 +7,14 @@ import { tmpdir } from 'os';
 import { join } from 'path';
 import { finished } from 'stream/promises';
 import { setTimeout } from 'timers/promises';
+import { BaiduIndexError } from './baidu-index.error';
 import {
     OriginCheckKeywordsResponseType,
     OriginCreateTaskParmaType,
     OriginCreateTaskResponseType,
     OriginGetResultResponseType,
 } from './baidu-index.type';
-import { BaiduIndexError } from './baidu-index.error';
+import CsvToJson = require('csvtojson');
 
 export class BaiduIndex {
     accessToken: string;
@@ -147,7 +147,7 @@ export class BaiduIndex {
         const zip = new admZip(zipFile);
         const zipEntries = zip.getEntries();
         const csvStr = iconv.decode(zipEntries[0].getData(), 'GBK');
-        const result = CsvToJson({ trim: true }).fromString(csvStr);
+        const result = await CsvToJson({ trim: true }).fromString(csvStr);
 
         await unlink(zipFile);
         return result;
