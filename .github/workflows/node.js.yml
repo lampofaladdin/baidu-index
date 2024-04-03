@@ -32,8 +32,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
           cache-dependency-path: '**/yarn.lock'
-      - run: echo "BAIDU_TOKEN is $BAIDU_TOKEN"    
-
-      # - run: yarn
-      # - run: yarn build
-      # - run: yarn test
+      - run: yarn
+      - run: yarn build
+      - run: yarn test
