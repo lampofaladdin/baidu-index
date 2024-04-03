@@ -15,6 +15,10 @@ Baidu index sdk for Node.js.
 npm install --save @wddv/baidu-index
 ```
 
+## Required
+
+Node.js verion >= 18
+
 ## Usage
 
 ```typescript

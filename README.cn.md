@@ -9,13 +9,20 @@
 
 百度指数 Node.js SDK
 
-## Installation
+## 安装
 
 ```
 npm install --save @wddv/baidu-index
 ```
 
-## Usage
+## 
+
+```
+npm install --save @wddv/baidu-index
+```
+
+
+## 使用
 
 ```typescript
 // 初始化实例
@@ -45,7 +52,7 @@ console.log(result);
 
 [app.ts](example/app.ts)
 
-## Reference
+## 引用
 
 - [Baidu index](https://index.baidu.com/)
 - [Baidu index Doc](https://dev2.baidu.com/content?sceneType=0&pageId=103441&nodeId=813&subhead=)
