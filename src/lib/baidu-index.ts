@@ -13,6 +13,7 @@ import {
     OriginCreateTaskParmaType,
     OriginCreateTaskResponseType,
     OriginGetResultResponseType,
+    OriginRefreshAccessTokenResponseType,
 } from './baidu-index.type';
 import CsvToJson = require('csvtojson');
 
@@ -21,11 +22,11 @@ export class BaiduIndex {
     userName: string;
     axiosClient: Axios;
     constructor(accessToken: string, userName: string) {
-        if(!accessToken){
-            throw new BaiduIndexError('accessToken not found','constructor');
+        if (!accessToken) {
+            throw new BaiduIndexError('accessToken not found', 'constructor');
         }
-        if(!userName){
-            throw new BaiduIndexError('userName not found','constructor');
+        if (!userName) {
+            throw new BaiduIndexError('userName not found', 'constructor');
         }
 
         this.accessToken = accessToken;
@@ -84,6 +85,16 @@ export class BaiduIndex {
       await this.axiosClient.post<OriginCheckKeywordsResponseType>(
           'checkKeywords',
           params
+      );
+        return data;
+    }
+    /**
+   * 原生刷新token
+   */
+    async originRefreshAccessToken(): Promise<OriginRefreshAccessTokenResponseType> {
+        const { data } =
+      await this.axiosClient.post<OriginRefreshAccessTokenResponseType>(
+          'refreshAccessToken'
       );
         return data;
     }
@@ -176,5 +187,24 @@ export class BaiduIndex {
             throw new BaiduIndexError('match not found', 'checkKeywords');
         }
         return new Map(match.map((item) => [item.keyword, !!item.status]));
+    }
+
+    /**
+   * 刷新 token
+   */
+    async refreshAccessToken(): Promise<{accessToken:string,accessTokenExpireTime:string}> {
+        const res = await this.originRefreshAccessToken();
+        if (res.header.succ !== 1) {
+            throw new BaiduIndexError(
+                `${res.header.failures.map((i) => i.message).join(';')}`,
+                'refreshAccessToken'
+            );
+        }
+        const data = res.body.data[0];
+        if (!data) {
+            throw new BaiduIndexError('match not found', 'refreshAccessToken');
+        }
+        this.accessToken = data.accessToken;
+        return data;
     }
 }

@@ -9,6 +9,12 @@
 
 百度指数 Node.js SDK
 
+[此接口仅面向百度指数用户用以刷新OAuth访问令牌。**访问指数接口的access_token有效期为24小时**，在到期失效前可请求此接口换取新的有效期为24小时的access_token。非百度指数授权用户无法使用该接口进行token刷新，会返回错误码**9016002**(无权限)。若超过24小时未通过接口形式进行刷新，则需要登录百度指数官网->API接口界面手动获取token进行token刷新](https://dev2.baidu.com/content?sceneType=0&pageId=103849&nodeId=1038&subhead=)
+
+因为超过24小时，token 就会失效，必须去百度指数官网获取新的 token
+
+建议用户自己保存 token，并在24小时内请求刷新 token 接口
+
 ## 必须
 
 Node.js 版本 >= 18
@@ -47,6 +53,8 @@ const { taskId } = await baiduIndex.createTask({
 const result = await baiduIndex.getResult(taskId);
 console.log(result);
 ```
+
+## 示例
 
 [app.ts](example/app.ts)
 

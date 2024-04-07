@@ -78,3 +78,15 @@ export type OriginCheckKeywordsResponseType = BaiduIndexResponseCommenType & {
     ];
   };
 };
+
+export type OriginRefreshAccessTokenResponseType = BaiduIndexResponseCommenType & {
+  body: {
+    expand: Record<string, unknown>;
+    data: [
+      {
+        accessToken:string,
+        accessTokenExpireTime:string
+      }
+    ];
+  };
+};

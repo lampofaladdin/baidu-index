@@ -9,6 +9,12 @@
 
 Baidu index sdk for Node.js.
 
+This interface is only available to Baidu Index users for refreshing OAuth access tokens. **The access token for accessing the index interface is valid for 24 hours.** Before it expires, you can request this interface to obtain a new access token with a validity period of 24 hours. Non-Baidu Index authorized users cannot use this interface to refresh tokens and will receive error code **9016002** (no permission). If more than 24 hours have passed without refreshing through the interface, you will need to manually obtain a token by logging in to the Baidu Index official website and navigating to the API interface section.
+
+Because the token expires after 24 hours, users must obtain a new token from the Baidu Index official website.
+
+I recommend that users save their tokens and request the token refresh interface within 24 hours.
+
 ## Installation
 
 ```
@@ -44,7 +50,10 @@ const baiduIndex = new BaiduIndex(
     console.log(result);
 ```
 
+## Example
+
 [app.ts](example/app.ts)
+
 
 ## Reference
 
