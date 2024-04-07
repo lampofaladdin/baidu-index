@@ -2,7 +2,7 @@
   "name": "@wddv/baidu-index",
   "version": "0.0.3",
   "description": "Baidu index api sdk for Node.js",
-  "main": "dist/main.js",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rimraf dist && tsc",
