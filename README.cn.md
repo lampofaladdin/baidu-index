@@ -9,13 +9,11 @@
 
 百度指数 Node.js SDK
 
+## 必须
+
+Node.js 版本 >= 18
+
 ## 安装
-
-```
-npm install --save @wddv/baidu-index
-```
-
-## 
 
 ```
 npm install --save @wddv/baidu-index

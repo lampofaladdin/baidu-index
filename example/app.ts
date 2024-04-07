@@ -22,6 +22,9 @@ async function example(){
         });
         const result = await baiduIndex.getResult(taskId);
         console.log(result);
+        
+        const keywordsMap = await baiduIndex.checkKeywords(['小米','symcxw']);
+        console.log(keywordsMap);
     }catch(e){
         console.error(e);
     }
