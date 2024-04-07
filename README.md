@@ -15,6 +15,8 @@ Because the token expires after 24 hours, users must obtain a new token from the
 
 I recommend that users save their tokens and request the token refresh interface within 24 hours.
 
+[中文文档](./README.cn.md)
+
 ## Installation
 
 ```
