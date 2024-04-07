@@ -1,6 +1,6 @@
 {
   "name": "@wddv/baidu-index",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Baidu index api sdk for Node.js",
   "main": "dist/main.js",
   "types": "dist/index.d.ts",
