@@ -66,8 +66,8 @@ export class BaiduIndex {
    * 原生查询任务状态
    */
     async originGgetResult(params: {
-    taskId: string;
-  }): Promise<OriginGetResultResponseType> {
+        taskId: string;
+    }): Promise<OriginGetResultResponseType> {
         const { data } = await this.axiosClient.post<OriginGetResultResponseType>(
             'getResult',
             params
@@ -79,13 +79,13 @@ export class BaiduIndex {
    * 原生查询关键词是否收录
    */
     async originCheckKeywords(params: {
-    keyword: string[];
-  }): Promise<OriginCheckKeywordsResponseType> {
+        keyword: string[];
+    }): Promise<OriginCheckKeywordsResponseType> {
         const { data } =
-      await this.axiosClient.post<OriginCheckKeywordsResponseType>(
-          'checkKeywords',
-          params
-      );
+            await this.axiosClient.post<OriginCheckKeywordsResponseType>(
+                'checkKeywords',
+                params
+            );
         return data;
     }
     /**
@@ -93,9 +93,9 @@ export class BaiduIndex {
    */
     async originRefreshAccessToken(): Promise<OriginRefreshAccessTokenResponseType> {
         const { data } =
-      await this.axiosClient.post<OriginRefreshAccessTokenResponseType>(
-          'refreshAccessToken'
-      );
+            await this.axiosClient.post<OriginRefreshAccessTokenResponseType>(
+                'refreshAccessToken'
+            );
         return data;
     }
 
@@ -125,7 +125,7 @@ export class BaiduIndex {
    * 获取结果，内部方法
    */
     private async _fetchResult(taskId: string, timer: number): Promise<string> {
-    // eslint-disable-next-line no-constant-condition
+        // eslint-disable-next-line no-constant-condition
         while (true) {
             const res = await this.originGgetResult({ taskId });
             if (res.header.succ !== 1) {
@@ -192,7 +192,10 @@ export class BaiduIndex {
     /**
    * 刷新 token
    */
-    async refreshAccessToken(): Promise<{accessToken:string,accessTokenExpireTime:string}> {
+    async refreshAccessToken(): Promise<{
+        accessToken: string;
+        accessTokenExpireTime: string;
+    }> {
         const res = await this.originRefreshAccessToken();
         if (res.header.succ !== 1) {
             throw new BaiduIndexError(
